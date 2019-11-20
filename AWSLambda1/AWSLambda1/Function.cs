@@ -41,6 +41,18 @@ namespace AlexaTechnicalInterview
             string outputText = "";
         }
 
+        private SkillResponse BodyResponse (string outputSpeech,
+            bool shouldEndSession,
+            string repromptText="Just say, Technical for a Technical Interview. To exit, say, exit.")
+        {
+            var response = new ResponseBody
+            {
+                shouldEndSession = shouldEndSession,
+                outputSpeech = new PlainTextOutputSpeech { Text = outputSpeech }
+            };
+
+
+        }
 
     }
 }
