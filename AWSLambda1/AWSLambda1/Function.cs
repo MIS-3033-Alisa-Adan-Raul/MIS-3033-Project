@@ -39,6 +39,11 @@ namespace AlexaTechnicalInterview
         {
             var requestType = input.GetRequestType();
             string outputText = "";
+
+            if (requestType==typeof(LaunchRequest))
+            {
+                return BodyResponse("Welcome to the interview! Please say Technical or Behavioral to start the interview", false);
+            }
         }
 
         private SkillResponse BodyResponse (string outputSpeech,
