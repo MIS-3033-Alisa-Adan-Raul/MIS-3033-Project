@@ -1,12 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using Newtonsoft.json;
 using Amazon.Lambda.Core;
-using System.net.http;
 using Alexa.NET.Request;
-using Alexa.NET.Type;
 using Alexa.NET.Response;
 using System.Net.Http;
 using Alexa.NET.Request.Type;
@@ -37,14 +31,18 @@ namespace AlexaTechnicalInterview
             httpClient = new HttpClient();
         }
 
-        public async Task<SkillResponse> FunctionHandler(SkillRequest input, ILambdaContext context)
+        public SkillResponse FunctionHandler(SkillRequest input, ILambdaContext context)
         {
             var requestType = input.GetRequestType();
             string outputText = "";
 
-            if (requestType==typeof(LaunchRequest))
+            if (requestType == typeof(LaunchRequest))
             {
                 return BodyResponse("Welcome to the interview! Please say Technical or Behavioral to start the interview", false);
+            }
+            else if (input.GetRequestType() typeof(IntentRequest))
+            {
+
             }
         }
 
