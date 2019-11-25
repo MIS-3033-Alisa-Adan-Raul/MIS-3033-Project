@@ -2,12 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using newtonsoft.json;
+using Newtonsoft.json;
 using Amazon.Lambda.Core;
 using System.net.http;
 using Alexa.NET.Request;
 using Alexa.NET.Type;
 using Alexa.NET.Response;
+using System.Net.Http;
+using Alexa.NET.Request.Type;
 
 // Assembly attribute to enable the Lambda function's JSON input to be converted into a .NET class.
 [assembly: LambdaSerializer(typeof(Amazon.Lambda.Serialization.Json.JsonSerializer))]
@@ -55,6 +57,17 @@ namespace AlexaTechnicalInterview
                 shouldEndSession = shouldEndSession,
                 outputSpeech = new PlainTextOutputSpeech { Text = outputSpeech }
             };
+
+            if(repromptText!= null)
+            {
+                response.Reprompt = new Reprompt() { OutputSpeech = new PlainTextOutputSpeech() { Text = repromptText } };
+            }
+            var skillResonse = new SkillResponse
+            {
+                Response = response,
+                Version = "1.0"
+            };
+            return skillResonse;
 
 
         }
