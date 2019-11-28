@@ -34,26 +34,25 @@ namespace AlexaTechnicalInterview
         public SkillResponse FunctionHandler(SkillRequest input, ILambdaContext context)
         {
             var requestType = input.GetRequestType();
-            string outputText = "";
-
-            if (requestType == typeof(LaunchRequest))
+            if (requestType==typeof(IntentRequest))
             {
-                return BodyResponse("Welcome to the interview! Please say Technical or Behavioral to start the interview", false);
+                return BodyResponse("Welcome to the interview!",true);
             }
-            else if (input.GetRequestType() typeof(IntentRequest))
+            else
             {
-
+                return BodyResponse("I dont know how to handle this intent. Please say something like Alexa, behavioral interview.", true);
             }
+
         }
 
         private SkillResponse BodyResponse (string outputSpeech,
             bool shouldEndSession,
-            string repromptText="Just say, Technical for a Technical Interview. To exit, say, exit.")
+            string repromptText="Just say, Behavioral to initiate a behavioral interview. To exit, say, exit.")
         {
             var response = new ResponseBody
             {
-                shouldEndSession = shouldEndSession,
-                outputSpeech = new PlainTextOutputSpeech { Text = outputSpeech }
+                ShouldEndSession = shouldEndSession,
+                OutputSpeech = new PlainTextOutputSpeech { Text = outputSpeech }
             };
 
             if(repromptText!= null)
