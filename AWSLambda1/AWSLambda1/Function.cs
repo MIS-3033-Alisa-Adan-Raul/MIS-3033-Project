@@ -40,14 +40,14 @@ namespace AlexaTechnicalInterview
             }
             else
             {
-                return BodyResponse("I dont know how to handle this intent. Please say something like Alexa, behavioral interview.", true);
+                return BodyResponse("I dont know how to handle this intent. Please say something like Alexa, interview.", true);
             }
 
         }
 
         private SkillResponse BodyResponse (string outputSpeech,
             bool shouldEndSession,
-            string repromptText="Just say, Behavioral to initiate a behavioral interview. To exit, say, exit.")
+            string repromptText="Just say, interview to intitiate an interview. To exit, say, exit.")
         {
             var response = new ResponseBody
             {
